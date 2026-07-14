@@ -1,10 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const {
-  getOneVoter,
   getAllVoters,
   addVoter,
-  updateVoter,
   deleteVoter,
   voterLogin,
   logout,
@@ -12,16 +10,15 @@ const {
   vote,
 } = require("../controller/voterController");
 const { isAdmin, isVoter } = require("../middleware/authMiddleware");
+const { loginLimiter } = require("../middleware/rateLimiter");
 
-// Admin
-router.get("/one/:id", getOneVoter);
-router.get("/all", getAllVoters);
-router.post("/add", addVoter);
-router.delete("/update/:id", updateVoter);
-router.delete("/delete/:id", deleteVoter);
+// Admin-managed
+router.get("/all", isAdmin, getAllVoters);
+router.post("/add", isAdmin, addVoter);
+router.delete("/delete/:id", isAdmin, deleteVoter);
 
-// Voter
-router.post("/voterlogin", voterLogin);
+// Voter self-service
+router.post("/login", loginLimiter, voterLogin);
 router.get("/logout", logout);
 router.get("/me", isVoter, profile);
 router.put("/vote/:id", isVoter, vote);

@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Merriweather", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-navy-50: #eef3f9;
+  --color-navy-100: #d7e3f0;
+  --color-navy-200: #b0c7e1;
+  --color-navy-300: #82a4cb;
+  --color-navy-400: #4f7ab0;
+  --color-navy-500: #2f5893;
+  --color-navy-600: #204074;
+  --color-navy-700: #1a3460;
+  --color-navy-800: #14274a;
+  --color-navy-900: #0b1c36;
+  --color-navy-950: #071224;
+
+  --color-gold-50: #fbf6e8;
+  --color-gold-100: #f5e8c2;
+  --color-gold-200: #ecd48c;
+  --color-gold-300: #e0bc57;
+  --color-gold-400: #cfa439;
+  --color-gold-500: #c9a227;
+  --color-gold-600: #a5811c;
+  --color-gold-700: #7d6117;
+  --color-gold-800: #574314;
+  --color-gold-900: #382c11;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+::selection {
+  background-color: var(--color-gold-200);
+  color: var(--color-navy-900);
+}
